@@ -39,14 +39,14 @@
             }
             lock (_locker)
             {
-                while (true)
+                do
                 {
                     var timestamp = GetTimestamp(year);
                     if (timestamp >= 2199023255552L)
                     {
                         throw new InvalidOperationException("Timestamp overflow");
                     }
-                    if (_timestamp < timestamp)
+                    if (_timestamp > timestamp)
                     {
                         throw new InvalidOperationException("Abnormal system clock");
                     }
@@ -60,7 +60,7 @@
                     var p2 = mac << 12;
                     var p3 = sequence;
                     return p1 | p2 | p3;
-                }
+                } while (true);
             }
         }
     }
