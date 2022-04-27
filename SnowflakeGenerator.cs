@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1
+﻿namespace Twitter
 {
     /// <summary>
     /// 雪花生成器
